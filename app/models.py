@@ -43,4 +43,4 @@ class Route(Base):
     origin=Column(String)
     destination=Column(String)
     distance=Column(Integer)
-    duration=Column(String)
+    duration=Column(Float)
