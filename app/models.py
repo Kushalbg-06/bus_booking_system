@@ -24,7 +24,7 @@ class Bus(Base):
 class Seats(Base):
     __tablename__="seats"
     id=Column(Integer,primary_key=True,index=True)
-    bus_id=Column(Integer,ForeignKey("buses.id"))
+    bus_id=Column(Integer,ForeignKey("buses.id")) 
     seat_number=Column(Integer)
     is_booked=Column(Boolean,default=False)
 
