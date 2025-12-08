@@ -1,9 +1,8 @@
 from fastapi import APIRouter,Depends,HTTPException,status
 from sqlalchemy.orm import Session
 from ..database import get_db
-from .. import models,schemas
-from schemas import buses
-from schemas.buses import BusCreate,BusResponse
+from .. import models
+from ..schemas import buses
 from typing import List
 
 router=APIRouter(
@@ -11,8 +10,8 @@ router=APIRouter(
     tags=["Buses"]
 )
 
-@router.post("/",response_model=BusResponse)
-def add_buses(bus:BusCreate,db:Session=Depends(get_db)):
+@router.post("/",response_model=buses.BusResponse)
+def add_buses(bus:buses.BusCreate,db:Session=Depends(get_db)):
     new_bus=models.Bus(
         bus_number=bus.bus_number,
         origin=bus.origin,
@@ -28,3 +27,12 @@ def add_buses(bus:BusCreate,db:Session=Depends(get_db)):
     db.refresh(new_bus)
 
     return new_bus
+@router.get("/",response_model=List[buses.BusResponse])
+def get_all_bus(db:Session=Depends(get_db)):
+    buses=db.query(models.Bus).all()
+    return buses
+
+@router.get("/{id}",response_model=buses.BusResponse)
+def get_bus_id(id:int,db:Session=Depends(get_db)):
+    buse_id=db.query(models.Bus).filter(models.Bus.id==id).first()
+    return buse_id
