@@ -19,7 +19,7 @@ def add_buses(bus:buses.BusCreate,db:Session=Depends(get_db)):
         departure_time=bus.departure_time,
         arrival_time=bus.arrival_time,
         total_seats=bus.total_seats,
-       is_cancelled=False
+        is_cancelled=False
 
     )
     db.add(new_bus)
