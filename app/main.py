@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from . import models
 from .database import engine
-from .routers import booking_router,bus_router,route_router,seat_router
+from .routers import booking_router,bus_router,route_router,seat_router,user_router
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -14,3 +14,4 @@ def home():
 app.include_router(bus_router.router)
 app.include_router(route_router.router)
 app.include_router(seat_router.router)
+app.include_router(user_router.router)

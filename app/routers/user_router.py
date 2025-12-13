@@ -20,3 +20,10 @@ def add_users(user:users.UserCreate,db:Session=Depends(get_db)):
     db.commit()
     db.refresh(new_user)
     return new_user
+
+@router.get("/",response_model=List[users.UserResponse])
+def get_all_user(db:Session=Depends(get_db)):
+    users=db.query(models.User).all()
+    if not users:
+        raise HTTPException(404,detail="users not found")
+    return users
