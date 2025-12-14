@@ -27,3 +27,10 @@ def get_all_user(db:Session=Depends(get_db)):
     if not users:
         raise HTTPException(404,detail="users not found")
     return users
+
+@router.get("/{id}",response_model=users.UserResponse)
+def get_by_id(int:id,db:Session=Depends(get_db)):
+    user=db.query(models.User).filter(models.User.id==id).first()
+    if not user:
+        raise HTTPException(404,detail="user not found")
+    return user
