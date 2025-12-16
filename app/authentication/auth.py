@@ -9,3 +9,21 @@ router=APIRouter(
     prefix="/user",
     tags=["Users"]
 )
+
+@router.post('/register',response_model=schemas.UserResponse)
+def register(request:schemas.UserCreate,db:Session=Depends(get_db)):
+    user=db.query(models.User).filter(models.User.email==request.email).first()
+    if user:
+        raise HTTPException(404,detail="email is already register")
+    
+    hash_pwd=hashing.hash_password(request.password)
+    new_user=models.User(
+        name=request.name,
+        email=request.email,
+        password=hash_pwd
+    )
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+
+    return new_user
