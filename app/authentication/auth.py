@@ -7,8 +7,8 @@ from . import token
 from fastapi.security import OAuth2PasswordRequestForm
 
 router=APIRouter(
-    prefix="/user",
-    tags=["Users"]
+    prefix="/auth",
+    tags=["Authentication"]
 )
 
 @router.post('/register',response_model=schemas.UserResponse)
