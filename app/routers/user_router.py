@@ -34,3 +34,13 @@ def get_by_id(int:id,db:Session=Depends(get_db)):
     if not user:
         raise HTTPException(404,detail="user not found")
     return user
+
+@router.delete("/{id}",response_model=users.UserResponse)
+def user_delete(int:id,db:Session=Depends(get_db)):
+    user=db.query(models.User).filter(models.User.id==id).first()
+    if not user:
+        raise HTTPException(404,detail="user not found")
+    db.delete(user)
+    db.commit
+    db.refresh(user)
+    return "details:user deleted sucessfully"
