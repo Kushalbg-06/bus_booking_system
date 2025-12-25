@@ -30,3 +30,13 @@ def get_all_route(db:Session=Depends(get_db)):
     if not routes:
         raise HTTPException(404,detail="routes not found")
     return routes
+
+@router.delete("/{id}",response_model=routes.RouteResponse)
+def  route_delete(id:int,db:Session=Depends(get_db)):
+    routes=db.query(models.Route).filter(models.Route.id==id).first()
+    if not routes:
+        raise HTTPException(detail="the route not found")
+    db.delete(routes)
+    db.commit()
+    db.refresh(routes)
+    return "the route is deleted sucessfully"
