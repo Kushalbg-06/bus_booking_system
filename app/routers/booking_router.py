@@ -22,3 +22,10 @@ def book_seat(data: BookingCreate, db: Session = Depends(get_db), current = Depe
     seat.is_booked = True
     db.add(booking); db.commit(); db.refresh(booking)
     return booking
+ 
+@router.get("/my", response_model=list[BookingResponse])
+def my_bookings(db: Session = Depends(get_db), current = Depends(get_current_user)):
+    if current["is_admin"]:
+        raise HTTPException(403, "Admins have no user bookings")
+    user = current["user"]
+    return db.query(models.Booking).filter(models.Booking.user_id == user.id).all()
