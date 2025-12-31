@@ -8,8 +8,8 @@ router=APIRouter(
    prefix="/booking",
    tags=["Booking"] 
 )
-@router.post("/", response_model=BookingResponse)
-def book_seat(data: BookingCreate, db: Session = Depends(get_db), current = Depends(get_current_user)):
+@router.post("/", response_model=schemas.BookingResponse)
+def book_seat(data: schemas.BookingCreate, db: Session = Depends(get_db), current = Depends(get_current_user)):
     if current["is_admin"]:
         raise HTTPException(403, "Admins cannot book")
     user = current["user"]
@@ -23,7 +23,7 @@ def book_seat(data: BookingCreate, db: Session = Depends(get_db), current = Depe
     db.add(booking); db.commit(); db.refresh(booking)
     return booking
  
-@router.get("/my", response_model=list[BookingResponse])
+@router.get("/my", response_model=list[schemas.BookingResponse])
 def my_bookings(db: Session = Depends(get_db), current = Depends(get_current_user)):
     if current["is_admin"]:
         raise HTTPException(403, "Admins have no user bookings")
