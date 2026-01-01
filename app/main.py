@@ -14,7 +14,6 @@ def home():
     
 app.include_router(auth.router)
 app.include_router(bus_router.router)
-app.include_router(booking_router.router)
 app.include_router(seat_router.router)
 app.include_router(route_router.router)
 app.include_router(user_router.router)
