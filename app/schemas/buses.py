@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+
 
 class BusCreate(BaseModel):
     bus_number:str
