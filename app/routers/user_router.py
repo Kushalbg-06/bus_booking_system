@@ -7,7 +7,7 @@ from typing import List
 
 router=APIRouter(
    prefix="/users",
-   tags=["User"] 
+   tags=["Users"] 
 )
 @router.post("/",response_model=users.UserResponse)
 def add_users(user:users.UserCreate,db:Session=Depends(get_db)):
