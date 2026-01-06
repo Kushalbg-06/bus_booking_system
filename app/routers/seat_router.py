@@ -7,7 +7,7 @@ from typing import List
 
 router=APIRouter(
     prefix="/seat",
-    tags=["Seat"]
+    tags=["Seats"]
 )
 @router.get("{id}",response_model=List[seats.SeatResponse])
 def get_seats(id:int,db:Session=Depends(get_db)):
