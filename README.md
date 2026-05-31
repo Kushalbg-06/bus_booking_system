@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Travel Bus Backend
 
 A REST API backend for a bus booking system built with **FastAPI** and **SQLAlchemy**. It supports user authentication, bus and route management, seat tracking, and booking operations.
@@ -231,3 +232,9 @@ Tokens are signed with HS256 and expire after 30 minutes by default.
 ## License
 
 This project is for educational and development purposes.
+=======
+# bus_booking_system(backend) 
+tech stack:FastAPI,Sqllite,RestAPI
+
+need to add more
+>>>>>>> 9117be4692d7395e36d28a5189880db3d6cc7dc1
