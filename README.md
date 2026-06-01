@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Travel Bus Backend
 
 A REST API backend for a bus booking system built with **FastAPI** and **SQLAlchemy**. It supports user authentication, bus and route management, seat tracking, and booking operations.
@@ -219,22 +218,4 @@ On first run, a `database.db` SQLite file is created automatically in the projec
 | Booking  | id, user_id, bus_id, seat_id, booking_time, seat_status                |
 | Route    | id, origin, destination, distance, duration                            |
 
-## Authentication
 
-Protected endpoints expect a Bearer token in the `Authorization` header:
-
-```
-Authorization: Bearer <access_token>
-```
-
-Tokens are signed with HS256 and expire after 30 minutes by default.
-
-## License
-
-This project is for educational and development purposes.
-=======
-# bus_booking_system(backend) 
-tech stack:FastAPI,Sqllite,RestAPI
-
-need to add more
->>>>>>> 9117be4692d7395e36d28a5189880db3d6cc7dc1
