@@ -19,8 +19,7 @@ A REST API backend for a bus booking system built with **FastAPI** and **SQLAlch
 | ORM          | SQLAlchemy              |
 | Database     | SQLite                  |
 | Auth         | JWT (python-jose)       |
-| Password hashing | Argon2 (passlib)    |
-| Server       | Uvicorn                 |
+
 
 ## Project Structure
 
