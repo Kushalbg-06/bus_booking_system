@@ -9,7 +9,7 @@ A REST API backend for a bus booking system built with **FastAPI** and **SQLAlch
 - Seat availability per bus
 - Booking creation, listing, and cancellation (booking router)
 - SQLite database with automatic table creation on startup
-- Interactive API docs via Swagger UI
+
 
 ## Tech Stack
 
